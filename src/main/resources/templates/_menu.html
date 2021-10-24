@@ -1,0 +1,40 @@
+<div class="menu-container"
+   xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
+   <button type="button" onclick="location.href='/'"  class="btn btn-light">Home</button>
+   |
+   
+   <button  onclick="location.href='/productList'"  class="btn btn-light">
+   Product List
+   </button>
+   |
+    <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+      <button onclick="location.href='/admin/userList'"  class="btn btn-light">
+      User List
+      </button>
+      |
+   </th:block>
+   <button onclick="location.href='/shoppingCart'"  class="btn btn-light">
+   My Cart
+   </button>
+   |
+   <th:block sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')">
+      <button onclick="location.href='/admin/orderList'"  class="btn btn-light">
+      Order List
+      </button>
+      |
+   </th:block>
+   <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+      <button onclick="location.href='/admin/product'"  class="btn btn-light">
+      Create Product
+      </button>
+      |
+   </th:block>
+   
+   <th:block sec:authorize="hasRole('ROLE_MANAGER')">
+      <button onclick="location.href='/admin/resetpassword'" class="btn btn-light">
+     	Change Password
+      </button>
+      |
+   </th:block>
+</div>
